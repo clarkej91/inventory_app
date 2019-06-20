@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+///////////////
+// DEPENDENCY
+///////////////
+import React, { Component } from 'react'
+import OrderList from './components/OrderList';
+import ShowList from './components/ShowList';
+import Form from './components/Form';
+import Nav from './components/Nav';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// ===================
+// COMPONENT
+// ===================
+class App extends Component {
+  render() {
+    return (
+      <Router>
+      <Nav />
+      <div>
+        <Switch>
+        <Route path="/" exact component={ShowList} />
+        <Route path="/order" component={OrderList} />
+        <Route path="/form" component={Form}       />
+        </Switch>
+      </div>
+      </Router>
+    );
+  }
 }
 
+
+
+// ===================
+// EXPORT
+// ===================
 export default App;
