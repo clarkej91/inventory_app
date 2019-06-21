@@ -51,7 +51,6 @@ class App extends Component {
 
   handleAdd(product){
     (product.qty = parseInt(product.qty) + 1)
-    console.log('inside handleAdd',product.qty);
     fetch(`https://obscure-brushlands-30090.herokuapp.com/products/${product.id}`, {
       body:JSON.stringify(product),
       method: 'PUT',
@@ -62,16 +61,14 @@ class App extends Component {
     })
     .then( updatedQty => updatedQty.json())
     .then(jData => {
-      console.log(jData);
+      this.fetchProducts()
     })
     .catch(err => console.log('this is error from handleAdd', err))
-    this.fetchProducts()
   }
 
   handleNumCheck(product){
     if(product.qty === 0){
       this.fetchProducts()
-      console.log('this is in handleNumCheck', product);
     }
   }
 
@@ -94,23 +91,23 @@ class App extends Component {
   })
   .then( updatedQty => updatedQty.json())
   .then(jData => {
+      this.fetchProducts()
   })
   .catch(err => console.log('this is error from handleSubtract', err))
-  this.fetchProducts()
 }
 
   setFilter(created){
     this.setState({
       filterArray: created
     })
-    console.log('this is filterArray', this.state.filterArray);
+
   }
 
   sortProducts(products) {
     let inventory = []
     let orderArray = []
     products.forEach( product => {
-      if(product.qty <= product.low_stock_value){
+      if(parseInt(product.qty) <= parseInt(product.low_stock_value)){
         orderArray.push(product)
       } else {
         inventory.push(product)
@@ -149,7 +146,6 @@ class App extends Component {
     fetch('https://obscure-brushlands-30090.herokuapp.com/products')
     .then(data => data.json())
     .then( jData => {
-      console.log('this is jData', jData)
       this.sortProducts(jData)
     })
   }
