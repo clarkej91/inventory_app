@@ -9,7 +9,7 @@ class Nav extends Component {
   render() {
     return (
        <nav>
-        <Link to="/">
+        <Link to="/home">
           <li>Home</li>
         </Link>
         <Link to="/order">

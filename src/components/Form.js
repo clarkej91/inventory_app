@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 
 
+
 // ===================
 // COMPONENT
 // ===================
@@ -17,26 +18,9 @@ class Form extends Component {
       redirect: false,
       createdProductID: null
     }
-    this.handleCreateProduct = this.handleCreateProduct.bind(this)
+
 }
 
-  handleCreateProduct(product) {
-    fetch('http://localhost:3000/products', {
-      body: JSON.stringify(product),
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    }).then( createdProduct => createdProduct.json())
-    .then( jData => {
-      this.setState({
-        redirect: true,
-        createdProductID: jData.id
-      }, console.log(jData))
-    })
-    .catch(err => console.log('create list error: ', err));
-  }
   ///////////////
 // HANDLERS
 ///////////////
@@ -49,7 +33,7 @@ class Form extends Component {
 
     handleSubmit = (event) => {
       event.preventDefault()
-      this.handleCreateProduct(this.state)
+      this.props.handleCreateProduct(this.state)
       this.clearForm()
     }
 
@@ -68,7 +52,7 @@ class Form extends Component {
 ///////////////
   render() {
     if (this.state.redirect === true) {
-      let redirectTo = '/';
+      let redirectTo = '/home';
       return <Redirect to={redirectTo} />
     }
     return (
