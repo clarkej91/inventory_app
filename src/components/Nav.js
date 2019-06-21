@@ -9,6 +9,7 @@ class Nav extends Component {
   render() {
     return (
        <nav>
+       <ul className="topnav">
         <Link to="/home">
           <li>Home</li>
         </Link>
@@ -18,6 +19,7 @@ class Nav extends Component {
         <Link to="/form">
           <li>Add Item</li>
         </Link>
+        </ul>
        </nav>
     );
   }

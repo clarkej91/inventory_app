@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NumberFormat from 'react-number-format';
 
 
 // ===================
@@ -6,34 +7,40 @@ import React, { Component } from 'react'
 // ===================
 class OrderList extends Component {
   render() {
-    console.log('this is in ordlist', this.props.filterArray);
     return (
-      <div>
-      <ul>
-        <h1> Order Page</h1>
+      <div className="list-Container">
+      <div className="header">
+        <h1> Low Stock </h1>
+      </div>
+      <div className="products">
         {this.props.filterArray ? this.props.filterArray.map((product, index) => {
           return(
-            <li key={index}>
-              <h2>Product</h2>{product.product_name}
-              <h4>Price</h4>{product.price}
-              <h5>Quantity</h5>{product.qty}
+            <div
+
+            key={index}>
+              <h2>{`Product ${product.product_name}`}</h2>
+              <h2>Price:
+              <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
+              </h2>
+              <h2>{`${product.qty} LEFT IN STOCK`}
+              </h2>
               <div>
               <button
+              className="addSubBtn"
               onClick={() => { this.props.handleAdd(product)}}
               >+</button>
               <button
+              className="addSubBtn"
               onClick={() => { this.props.handleSubtract(product)}}
               >-</button>
               </div>
               <div>
-              <button
-              onClick={() => { this.props.removeFilterArray(product.id, index, this.props.filter)}}
-              >BACK IN STOCK</button>
+              <h3>Plus to put back in stock</h3>
               </div>
-            </li>
+            </div>
           )
         }): ''}
-      </ul>
+      </div>
       </div>
     );
   }

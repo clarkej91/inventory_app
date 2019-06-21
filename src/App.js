@@ -31,7 +31,7 @@ class App extends Component {
     this.handleCreateProduct = this.handleCreateProduct.bind(this)
 }
   handleCreateProduct(product) {
-    fetch('http://localhost:3000/products', {
+    fetch('https://obscure-brushlands-30090.herokuapp.com/products', {
       body: JSON.stringify(product),
       method: 'POST',
       headers: {
@@ -52,7 +52,7 @@ class App extends Component {
   handleAdd(product){
     (product.qty = parseInt(product.qty) + 1)
     console.log('inside handleAdd',product.qty);
-    fetch(`http://localhost:3000/products/${product.id}`, {
+    fetch(`https://obscure-brushlands-30090.herokuapp.com/products/${product.id}`, {
       body:JSON.stringify(product),
       method: 'PUT',
       headers: {
@@ -84,7 +84,7 @@ class App extends Component {
         this.handleNumCheck(product)
     }
 
-  fetch(`http://localhost:3000/products/${product.id}`, {
+  fetch(`https://obscure-brushlands-30090.herokuapp.com/products/${product.id}`, {
     body:JSON.stringify(product),
     method: 'PUT',
     headers: {
@@ -111,7 +111,6 @@ class App extends Component {
     let orderArray = []
     products.forEach( product => {
       if(product.qty <= product.low_stock_value){
-        console.log('this is in sortProducts if statement', product.qty)
         orderArray.push(product)
       } else {
         inventory.push(product)
@@ -129,7 +128,7 @@ class App extends Component {
 
   handleDelete(productId, index, currentArray){
     console.log('inside handleDelete', productId, index, currentArray);
-    fetch(`http://localhost:3000/products/${productId}`, {
+    fetch(`https://obscure-brushlands-30090.herokuapp.com/products/${productId}`, {
       method: 'DELETE'
     })
     .then(data => {
@@ -147,7 +146,7 @@ class App extends Component {
   }
 
   fetchProducts () {
-    fetch('http://localhost:3000/products')
+    fetch('https://obscure-brushlands-30090.herokuapp.com/products')
     .then(data => data.json())
     .then( jData => {
       console.log('this is jData', jData)

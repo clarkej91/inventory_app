@@ -34,7 +34,18 @@ class Form extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
       this.props.handleCreateProduct(this.state)
+      this.handleRedirect()
       this.clearForm()
+    }
+
+    handleRedirect = () => {
+      this.setState({
+        redirect: true
+      })
+      if (this.state.redirect === true) {
+        let redirectTo = '/home';
+        return <Redirect to={redirectTo} />
+      }
     }
 
     clearForm = () => {
@@ -88,6 +99,7 @@ class Form extends Component {
             id="price"
           />
           <button
+            className="formBtn"
             type="submit">
             Submit New Item
           </button>
