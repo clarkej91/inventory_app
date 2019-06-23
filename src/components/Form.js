@@ -68,7 +68,7 @@ class Form extends Component {
     }
     return (
       <div>
-      <h1> Show Form Page </h1>
+      <h1> Add New Item </h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

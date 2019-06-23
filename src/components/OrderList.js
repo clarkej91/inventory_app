@@ -18,7 +18,7 @@ class OrderList extends Component {
             <div
 
             key={index}>
-              <h2>{`Product ${product.product_name}`}</h2>
+              <h2>{`Product: ${product.product_name}`}</h2>
               <h2>Price:
               <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
               </h2>

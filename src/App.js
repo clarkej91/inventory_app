@@ -75,6 +75,7 @@ class App extends Component {
   handleSubtract(product){
     (product.qty = parseInt(product.qty) - 1)
     if(product.qty <= product.low_stock_value){
+      alert(`${product.product_name} is low in stock`)
       let filterArray = []
         filterArray.push(product)
         this.setFilter(filterArray)
