@@ -2,220 +2,29 @@
         VARIABLES
  ==================== */
 :root {
-  /* fonts */
-  --font: 'Roboto Mono', monospace;
-  --accent-font: 'Roboto Condensed', impact;
-  /* colors */
-  --red: #A93F55;
-  --blue: #19323C;
-  --lighter-blue: #5c7d8b;
-  --purple: #484D6D;
 }
 /* ====================
         GENERAL
  ==================== */
 body {
-  font-family: var(--font);
-  font-size: 0.8em;
-  color: #444;
-  background: whitesmoke;
+  
 }
 
-.list-container {
-  width: 30em;
-  margin: 3em auto;
-  padding: 1.2em;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 2px 2px var(--purple);
+.drawer {
+  display: flex;
+  justify-content: flex-end;
 }
 
-::-webkit-scrollbar-track {
-  background-color: whitesmoke;
-}
-::-webkit-scrollbar {
-  width: 2px;
-  height: 5px;
-  background-color: whitesmoke;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #e3e3e3;
-}
-/* ====================
-        PRODUCTS
- ==================== */
-.products {
-  height: 45em;
-  padding: 0 1em;
-  box-sizing: border-box;
-  overflow: auto;
+.drawerHeader {
+  width: 81%;
 }
 
-.product {
-  display: grid;
-  grid-template-areas: "name price qty";
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 2fr 2fr 0.2fr;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
+.header {
+  display: flex;
+  justify-content: space-around;
 }
 
-.product h2 {
-  grid-row-start: name;
-  color: var(--lighter-blue);
-}
-
-.product h3 {
-  grid-row-start: price qty;
-}
-
-/* .product h1, .song h2 {
-  font-size: 0.9em;
-  padding: 0;
-  margin: 0;
-}
-.product h3, .song h4 {
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
-} */
-/* .product h2, .song h4 {
-  text-align: right;
-} */
-/* ====================
-        HEADERer
- ==================== */
-header {
-  border-bottom: 3px solid var(--red);
-  padding-bottom: 1em;
-}
-header h1 {
-  font-family: var(--accent-font);
-  font-size: 4em;
-  text-transform: uppercase;
-  color: var(--blue);
-  text-shadow: 1px 1px #ccc;
-  padding: 0;
-  margin: 0;
-}
-header h2 {
-  color: var(--purple);
-  font-size: 0.9em;
-  text-transform: uppercase;
-  text-align: right;
-  padding: 0;
-  margin: 0;
-}
-/* ====================
-        BUTTONS
- ==================== */
-.deleteBtn {
-  background-color: var(--blue);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.addSubBtn {
-  background-color: var(--blue);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-/* ====================
-        FORM
- ==================== */
-
-form input {
-  display: block;
-  height: 5em;
-  width: 100%;
-  padding: 0.5em;
-  box-sizing: border-box;
-  border: 1px solid #e7e7e7;
+.search {
   border-radius: 5px;
+  background: white;
 }
-
-form input[type="submit"] {
-  margin: 0.8em 0;
-  text-transform: uppercase;
-  font-family: var(--accent-font);
-  font-size: 3em;
-  background: var(--red);
-  color: whitesmoke;
-  border: 0px;
-}
-
-form input[type="submit"]:hover {
-  cursor: pointer;
-  box-shadow: 2px 2px var(--blue);
-}
-
-.formBtn {
-  background-color: var(--blue);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-/* ====================
-        NAVBAR
- ==================== */
-
- ul.topnav {
-   display: flex;
-   justify-content: space-around;
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   /* background-color: #333; */
-   font-size: 2.2em;
- }
-
- ul.topnav li {
-   float: left;
- }
-
- li {
-   border-right: 1px solid #bbb;
- }
-
- li:last-child {
-   border-right: none;
- }
-
- ul.topnav li a {
-   display: block;
-   color: white;
-   text-align: center;
-   padding: 14px 16px;
-   text-decoration: none;
-
- }
-
- ul.topnav li a:hover:not(.active) {background-color: #111;}
-
- ul.topnav li a.active {background-color: #4CAF50;}
-
- ul.topnav li.right {float: right;}

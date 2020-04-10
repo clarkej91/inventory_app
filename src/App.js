@@ -6,6 +6,9 @@ import OrderList from './components/OrderList';
 import ShowList from './components/ShowList';
 import Form from './components/Form';
 import Nav from './components/Nav';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // ===================
@@ -163,9 +166,13 @@ class App extends Component {
 
   render() {
     return (
+      <div className="root">
+      <Toolbar>
+      </Toolbar>
       <Router>
-      <Nav />
-      <div>
+      <Nav/>
+      <div className="drawer">
+      <div className="drawerHeader">
         <Switch>
         <Route path="/home"
           render={(routeProps) => (<ShowList
@@ -193,7 +200,9 @@ class App extends Component {
           />)} />
         </Switch>
       </div>
+      </div>
       </Router>
+      </div>
     );
   }
 }

@@ -1,52 +1,102 @@
-import React, { Component } from 'react';
-import NumberFormat from 'react-number-format';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-
-// ===================
-// COMPONENT
-// ===================
-class OrderList extends Component {
-  render() {
-    return (
-      <div className="list-Container">
-      <div className="header">
-        <h1> Low Stock </h1>
-      </div>
-      <div className="products">
-        {this.props.filterArray ? this.props.filterArray.map((product, index) => {
-          return(
-            <div
-
-            key={index}>
-              <h2>{`Product: ${product.product_name}`}</h2>
-              <h2>Price:
-              <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
-              </h2>
-              <h2>{`${product.qty} LEFT IN STOCK`}
-              </h2>
-              <div>
-              <button
-              className="addSubBtn"
-              onClick={() => { this.props.handleAdd(product)}}
-              >+</button>
-              <button
-              className="addSubBtn"
-              onClick={() => { this.props.handleSubtract(product)}}
-              >-</button>
-              </div>
-              <div>
-              <h3>Plus to put back in stock</h3>
-              </div>
-            </div>
-          )
-        }): ''}
-      </div>
-      </div>
-    );
-  }
+const columns = [
+  { id: 'product_name', label: 'Product Name', width: 200 },
+  { id: 'qty', label: 'Quantity', width: 200 },
+  { id: 'price', label: 'Price', width: 200 },
+  { id: 'button', label: '', width: 200 }
+];
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+  container: {
+    maxHeight: 550,
+  },
+});
+export default function OrderList(props) {
+  const classes = useStyles();
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  return (
+    <Paper className={classes.root}>
+      <TableContainer className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ width: column.width }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+      {props.filterArray.map((product, index) => {
+        return(
+          <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+            <TableCell>{product.product_name}</TableCell>
+            <TableCell>{product.qty}</TableCell>
+            <TableCell>${product.price}</TableCell>
+            <TableCell>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => { props.handleAdd(product)}}
+                >+
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => { props.handleSubtract(product)}}
+                >-
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={() => {props.handleDelete(product.id, index, props.filter)}}
+              >
+                <DeleteIcon />
+              </Button>
+            </TableCell>
+          </TableRow>
+        )
+      })}
+        </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={props.inventory.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+    </Paper>
+  );
 }
-
-// ===================
-// EXPORT
-// ===================
-export default OrderList;
