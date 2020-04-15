@@ -93,8 +93,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Nav() {
+export default function Nav(props) {
   const classes = useStyles();
+  const [search, setSearch] =React.useState('')
   const [title, setTitle] = React.useState('Stock');
 
   return (
@@ -114,6 +115,8 @@ export default function Nav() {
           </div>
           <InputBase
             placeholder="Search…"
+            onChange={e => setSearch(e.target.value)}
+            onClick={() => { props.handleSearch({search})}}
             classes={{
               root: classes.inputRoot,
               input: classes.inputInput,

@@ -58,6 +58,7 @@ export default function ShowList(props) {
           </TableHead>
           <TableBody>
       {props.inventory.map((product, index) => {
+        console.log(product, index);
         return(
           <TableRow hover role="checkbox" tabIndex={-1} key={index}>
             <TableCell>{product.product_name}</TableCell>

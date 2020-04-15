@@ -32,6 +32,7 @@ class App extends Component {
     this.removeFilterArray = this.removeFilterArray.bind(this)
     this.handleNumCheck = this.handleNumCheck.bind(this)
     this.handleCreateProduct = this.handleCreateProduct.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
 }
   handleCreateProduct(product) {
     fetch('https://obscure-brushlands-30090.herokuapp.com/products', {
@@ -137,6 +138,20 @@ class App extends Component {
     }).catch( err => console.log('this is error from handleDelete', err))
   }
 
+  handleSearch(productName){
+    if(productName.search === ''){
+      this.fetchProducts()
+    } else {
+    fetch(`https://obscure-brushlands-30090.herokuapp.com/products/search=${productName.search}`, {
+      method: 'GET'
+    })
+    .then(data => data.json())
+    .then( jData => {
+      this.sortProducts(jData)
+    })
+  }
+  }
+
   removeFromArray(array, arrayIndex){
     this.setState(prevState => {
       prevState[array].splice(arrayIndex, 1)
@@ -170,7 +185,9 @@ class App extends Component {
       <Toolbar>
       </Toolbar>
       <Router>
-      <Nav/>
+      <Nav
+        handleSearch={this.handleSearch}
+      />
       <div className="drawer">
       <div className="drawerHeader">
         <Switch>
