@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -76,7 +76,7 @@ class Form extends Component {
       <div>
       <Card>
         <CardContent>
-        <Typography color="textSecondary" gutterBottom>
+        <Typography component={'span'} variant={'body2'} color="textSecondary" gutterBottom>
       <h1> Add New Item </h1>
         </Typography>
         <form onSubmit={this.handleSubmit}>

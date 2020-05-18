@@ -1,19 +1,13 @@
-///////////////
-// DEPENDENCY
-///////////////
 import React, { Component } from 'react'
 import OrderList from './components/OrderList';
 import ShowList from './components/ShowList';
 import Form from './components/Form';
 import Nav from './components/Nav';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+// import IconButton from '@material-ui/core/IconButton';
+// import Typography from '@material-ui/core/Typography';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// ===================
-// COMPONENT
-// ===================
 class App extends Component {
   constructor(props) {
   super(props)
@@ -223,10 +217,4 @@ class App extends Component {
     );
   }
 }
-
-
-
-// ===================
-// EXPORT
-// ===================
 export default App;

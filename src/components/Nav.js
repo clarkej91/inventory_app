@@ -8,24 +8,25 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import { fade } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 
-const drawerWidth = 240;
+const topWidth = 240;
+const drawerWidth = '20%'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
   appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${topWidth}px)`,
     marginLeft: drawerWidth,
   },
   drawer: {
